@@ -19,6 +19,8 @@ def allowed_file(filename):
 def index():
     return render_template('index.html', confirmation=None)
 
+# ...
+
 # Ruta para manejar la carga de archivos
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -57,11 +59,21 @@ def upload_file():
 
         os.rename(file_path, result_file_path)
 
-        confirmation_message = f'Sucessfully uploaded. File location: {result_file_path}.'
+        # Ordenar los archivos alfabéticamente en la carpeta de destino
+        if os.path.isdir(destination_folder):
+            files_in_folder = os.listdir(destination_folder)
+            sorted_files = sorted(files_in_folder)
+            for i, file_name in enumerate(sorted_files):
+                old_file_path = os.path.join(destination_folder, file_name)
+                new_file_path = os.path.join(destination_folder, file_name)  # Modificación aquí
+                os.rename(old_file_path, new_file_path)
+
+        confirmation_message = f'Successfully uploaded. File location: {result_file_path}.'
     
         return render_template('index.html', confirmation=confirmation_message)
     else:
         return render_template('index.html', confirmation='Invalid file extension. Only txt, pdf, png, jpg, jpeg, gif, csv, json, sql are allowed.')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
