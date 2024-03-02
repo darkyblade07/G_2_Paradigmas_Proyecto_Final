@@ -71,7 +71,7 @@ def upload_file():
     
         return render_template('index.html', confirmation=confirmation_message)
     else:
-        return render_template('index.html', confirmation='Invalid file extension. Only txt, pdf, png, jpg, jpeg, gif, csv, json, sql are allowed.')
+        return render_template('index.html', confirmation='Invalid')
 
 
 if __name__ == '__main__':
