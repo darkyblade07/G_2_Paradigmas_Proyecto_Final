@@ -19,7 +19,6 @@ def allowed_file(filename):
 def index():
     return render_template('index.html', confirmation=None)
 
-# ...
 
 # Ruta para manejar la carga de archivos
 @app.route('/upload', methods=['POST'])
