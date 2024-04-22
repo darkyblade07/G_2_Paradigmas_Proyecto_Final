@@ -8,7 +8,7 @@ UPLOAD_FOLDER = 'files'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Función para verificar si la extensión es permitida
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'docx'}  # Agregar extensiones permitidas
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'docx', 'xlsx', 'csv', 'pptx', 'zip'}  # Agregar extensiones permitidas
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -58,10 +58,10 @@ def upload_file():
         # Guarda el archivo en la ruta completa del archivo
         file.save(file_path)
 
-        confirmation_message = f'Successfully uploaded. File location: {file_path}.'
+        confirmation_message = f'Cargado con éxito. Ubicación del archivo: {file_path}.'
 
     else:
-        confirmation_message = 'Invalid file type. Allowed extensions: {ALLOWED_EXTENSIONS}'
+        confirmation_message = 'Tipo de archivo inválido. Extensiones permitidas: {ALLOWED_EXTENSIONS}'
 
     return render_template('index.html', confirmation=confirmation_message)
 

@@ -111,12 +111,12 @@
 </head>
 <body>
     <div>
-        <h1>Document Classification</h1>
-        <p>Drop the file in here and let us do the boring stuff for you!</p>
+        <h1>Clasificación de documentos</h1>
+        <p>¡Deja el archivo aquí y déjanos hacer las cosas aburridas por ti!</p>
         <form action="/upload" method="post" enctype="multipart/form-data">
             <input type="file" name="file" required>
             <br>
-            <input type="submit" value="Upload">
+            <input type="submit" value="Subir">
         </form>
         {% if confirmation %}
             <p class="confirmation">{{ confirmation }}</p>
